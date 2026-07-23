@@ -6,7 +6,7 @@ A full-stack web application for managing events, venues, and participant regist
 
 The Event Management System (EMS) is designed to streamline the organization and management of events. It serves as a central platform for event organizers, participants, and venue providers to interact, transact, and coordinate all aspects related to events.
 
-Organizers can register, create venues, and publish events. Participants can register for an account and sign up for events they are interested in attending. Access to sensitive operations such as creating, editing, or deleting events — is restricted through secure authentication and role-based authorization, ensuring only the right users can perform the right actions.
+Organizers can register, create venues, and publish events. Participants can register for an account and sign up for events they are interested in attending. Access to sensitive operations such as creating, editing, or deleting events is restricted through secure authentication and role-based authorization, ensuring only the right users can perform the right actions.
 
 ##  Tools & Technologies
 
