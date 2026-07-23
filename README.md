@@ -1,14 +1,14 @@
 # Event Management System
 
-A full-stack web application for managing events, venues, and participant registrations, built as part of the DecodeLabs Full Stack Development Internship i.e., Project 4: Frontend & Backend Integration (Authentication & Authorization).
+A full-stack web application for managing events, venues, and participant registrations, built as part of the DecodeLabs Full Stack Development Internship. Project 4: Frontend & Backend Integration (Authentication & Authorization).
 
 ##  Scenario
 
 The Event Management System (EMS) is designed to streamline the organization and management of events. It serves as a central platform for event organizers, participants, and venue providers to interact, transact, and coordinate all aspects related to events.
 
-Organizers can register, create venues, and publish events. Participants can register for an account and sign up for events they are interested in attending. Access to sensitive operations — such as creating, editing, or deleting events — is restricted through secure authentication and role-based authorization, ensuring only the right users can perform the right actions.
+Organizers can register, create venues, and publish events. Participants can register for an account and sign up for events they are interested in attending. Access to sensitive operations such as creating, editing, or deleting events — is restricted through secure authentication and role-based authorization, ensuring only the right users can perform the right actions.
 
-## Tools & Technologies
+##  Tools & Technologies
 
 **Backend**
 - **Python** — core backend language
@@ -30,7 +30,7 @@ Organizers can register, create venues, and publish events. Participants can reg
 - **Frontend**: React (functional components, hooks, Context API for auth state, Axios for API calls)
 - Frontend and backend run as **two separate servers** and communicate over HTTP (CORS enabled), reflecting a real-world decoupled client-server architecture.
 
-## Database Design
+##  Database Design
 
 | Table | Description |
 |---|---|
@@ -50,7 +50,7 @@ Organizers can register, create venues, and publish events. Participants can reg
 - `CHECK` — restricts `role` to valid values and `capacity` to positive numbers
 - `PRIMARY KEY` / `FOREIGN KEY` — maintains referential integrity across all related tables
 
-## Authentication & Authorization
+##  Authentication & Authorization
 
 - **Registration & Login** — users sign up with a name, unique email, password, and role
 - **Password Hashing** — passwords are never stored in plain text; hashed and salted using Werkzeug Security before being saved
@@ -60,7 +60,7 @@ Organizers can register, create venues, and publish events. Participants can reg
 - **Ownership Checks** — event updates and deletions are restricted to the event's original organizer or an admin
 - Password hashes are **never** included in any API response
 
-## API Endpoints
+##  API Endpoints
 
 | Method | Endpoint | Access | Description |
 |---|---|---|---|
@@ -76,7 +76,7 @@ Organizers can register, create venues, and publish events. Participants can reg
 | POST | `/api/events/:id/register` | participant | Register for an event |
 | GET | `/api/events/:id/participants` | organizer, admin | View participants of an event |
 
-##  How It Works, Frontend & Backend Integration
+##  How It Works — Frontend & Backend Integration
 
 1. The Flask backend initializes the SQLite database on startup and exposes a set of RESTful JSON endpoints.
 2. The React frontend runs independently on its own development server and communicates with the backend exclusively through HTTP requests via `axios` (see `src/api.js`).
@@ -93,7 +93,9 @@ All endpoints can be tested directly against the backend, independent of the Rea
 
 1. **Register** a user via `POST /api/register` and copy the returned `token`.
 2. For any protected endpoint, add a header:
+   ```
    Authorization: Bearer <token>
+   ```
 3. Test the full CRUD flow: create a venue → create an event (`venue_id` from step above) → register a participant for the event → update the event → view participants → delete the event.
 
 This confirms the backend operates correctly as a standalone REST API, independent of any frontend client — the same principle React itself relies on for integration.
@@ -101,27 +103,29 @@ This confirms the backend operates correctly as a standalone REST API, independe
 ##  How to Run
 
 ### 1. Clone the repository
-
+```bash
 git clone https://github.com/786ghulamdastageer/fullstack-project-4-decode-labs.git
 cd fullstack-project-4-decode-labs
+```
 
 ### 2. Run the Backend
-
+```bash
 cd backend
 pip install -r requirements.txt
 python app.py
-
+```
 Runs on `http://127.0.0.1:5000`
 
 ### 3. Run the Frontend
 Open a new terminal:
+```bash
 cd frontend
 npm install
 npm start
-
+```
 Runs on `http://localhost:3000` and opens automatically in your browser.
 
-> Both servers must be running simultaneously i.e., the React frontend depends on the Flask backend for all data operations.
+> Both servers must be running simultaneously — the React frontend depends on the Flask backend for all data operations.
 
 ##  Project Structure
 
@@ -152,7 +156,7 @@ fullstack-project-4-decode-labs/
             └── EventList.js
 ```
 
-## Project Highlights
+##  Project Highlights
 
 - Full authentication flow: registration, login, hashed & salted passwords, JWT issuance
 - Middleware-based route protection (`@token_required`) and role-based access control (`@role_required`)
